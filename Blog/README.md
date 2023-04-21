@@ -31,6 +31,7 @@ https://www.google.com/recaptcha/admin
 Una vez ya creadas, las ponen abajo donde dice RECAPTCHA_PUBLIC_KEY y RECAPTCHA_PRIVATE_KEY. Después del signo igual.
 
 RECAPTCHA_PUBLIC_KEY=
+
 RECAPTCHA_PRIVATE_KEY=
 
 Esta parte se encarga de enviar a nuestro correo un token de activación de cuenta. No es necesario que realicen esta configuración a no ser que quieran ver cómo funciona.
@@ -40,22 +41,33 @@ Para poder saltar esta parte, es necesario que modifiquemos nuestro modelo que s
 Dentro del archivo, buscar la clase llamada CustomUser y dentro, buscar la variable que se llama is_active. Por defecto, está en False, es de pasarlo a True y listo.
 
 EMAIL_FROM=
+
 EMAIL_HOST_USER=
+
 EMAIL_HOST_PASSWORD=
+
 
 Aquí van todos los datos relacionados con la base de datos para hacer la conexión (utilizamos Postgres).
 
 DB_NAME=
+
 DB_USER=
+
 DB_PASSWORD=
+
 DB_HOST=
+
 DB_PORT=
+
 
 Por último, solo nos queda ejecutar los siguientes comandos:
 
 python manage.py makemigrations
+
 python manage.py migrate
 
+
 Y para levantar nuestro sitio:
+
 
 python manage.py runserver

@@ -1,0 +1,67 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Ecommerce{% endblock %}
+
+{% block content %}
+<main class="main-index">
+
+    <div class="content-submenu">
+
+        <div class="dropdown">
+            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categories
+            </a>
+
+            <ul class="dropdown-menu">
+                {% for categorie in categories %}
+                <li><a href="/{{categorie.slug}}">{{categorie.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="content-products-index">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                {% for image in images %}
+                <div class="carousel-item active">
+                    <img src="{{image.image1.url}}" class="d-block w-100 image-carousel" alt="image1">
+                </div>
+                <div class="carousel-item active">
+                    <img src="{{image.image2.url}}" class="d-block w-100 image-carousel" alt="image2">
+                </div>
+                <div class="carousel-item active">
+                    <img src="{{image.image3.url}}" class="d-block w-100 image-carousel" alt="image3">
+                </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <form action="" method="GET" class="filter-menu">
+            {{form.as_p}}
+            <button class="button-filter">Filtrar</button>
+        </form>
+        {% for product in products %}
+        <p>{{product.name}}</p>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}
